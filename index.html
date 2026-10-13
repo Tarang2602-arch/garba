@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GARBA · Partner Wanted</title>
+<meta name="description" content="Wanted: one Garba partner for Navratri 2026. 10 perks included. Price: ₹0.">
+<meta property="og:title" content="GARBA · One partner wanted">
+<meta property="og:description" content="10 perks. Pickup and drop included. Price: ₹0. Only one seat available.">
+<meta property="og:image" content="https://tarang2602-arch.github.io/garba/img/hero.jpg">
+<meta name="theme-color" content="#1A0E2E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;700;800&family=Hind+Vadodara:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap">
+<style>
+/* Layout: a single night-garba scroll — hero, ten perk "scenes" (looping mini animations), a ₹0 price card, then the booking form and a ticket. */
+:root{
+  --night:#1A0E2E;      /* Navratri night */
+  --night-2:#26143F;
+  --night-3:#341C55;
+  --kumkum:#E8264A;     /* red kumkum, main accent */
+  --marigold:#FFB000;
+  --parrot:#3DBB61;
+  --peacock:#14A6B8;
+  --mirror:#ECE6F7;     /* abhla mirror-work silver */
+  --text:#FFF6E8;
+  --muted:#C7B6DA;
+  --ink:#1A0E2E;
+  --line:rgba(255,246,232,.14);
+  --display:"Baloo Bhai 2", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body:"Hind Vadodara", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:max(16px, env(safe-area-inset-left))}
+h1,h2,h3{font-family:var(--display);line-height:1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--marigold);margin:0 0 12px}
+.gu{font-family:var(--display);font-weight:700}
+
+/* mirror-work dots used as a texture */
+.mirrorwork{background-image:
+  radial-gradient(circle at 50% 50%, rgba(236,230,247,.07) 0 3px, transparent 3.5px),
+  radial-gradient(circle at 50% 50%, rgba(255,176,0,.09) 0 1.5px, transparent 2px);
+  background-size:34px 34px, 34px 34px;background-position:0 0, 17px 17px}
+
+/* toran: triangle bunting strip */
+.toran{height:26px;background:
+  linear-gradient(135deg, var(--kumkum) 25%, transparent 25%) 0 0/28px 26px repeat-x,
+  linear-gradient(225deg, var(--kumkum) 25%, transparent 25%) 0 0/28px 26px repeat-x;
+  position:relative}
+.toran:after{content:"";position:absolute;inset:0;background:
+  linear-gradient(135deg, var(--marigold) 25%, transparent 25%) 14px 0/28px 26px repeat-x,
+  linear-gradient(225deg, var(--marigold) 25%, transparent 25%) 14px 0/28px 26px repeat-x;opacity:.95}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(88vh, 760px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2;background:url(img/hero.jpg) center 35%/cover}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg, rgba(26,14,46,.35) 0%, rgba(26,14,46,.55) 45%, var(--night) 96%)}
+.hero .wrap{width:100%;padding-block:120px 56px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.badge{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:rgba(26,14,46,.6);backdrop-filter:blur(8px);box-shadow:0 0 0 1px var(--line) inset}
+.badge.hot{background:var(--kumkum);box-shadow:none}
+.wordmark{font-family:var(--display);font-weight:800;font-size:clamp(84px,19vw,230px);line-height:.82;letter-spacing:-.03em;margin:0;
+  background:linear-gradient(100deg, var(--marigold) 0%, #FFD86B 30%, var(--kumkum) 70%, #FF7BA0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 6px 24px rgba(0,0,0,.35))}
+.wordmark small{display:block;font-size:.26em;letter-spacing:.02em;color:var(--text);-webkit-text-fill-color:var(--text);margin-top:.2em;font-weight:700}
+.hero-sub{font-size:clamp(19px,2.4vw,24px);max-width:34ch;margin:20px 0 28px;color:var(--text)}
+.hero-sub b{color:var(--marigold)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;border-radius:999px;padding:16px 26px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.9,.25,1.4), box-shadow .2s, background .2s}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--kumkum);color:#fff;box-shadow:0 12px 30px -10px rgba(232,38,74,.8)}
+.btn-main:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,246,232,.08);color:var(--text);box-shadow:0 0 0 1.5px var(--line) inset}
+.btn-ghost:hover{background:rgba(255,246,232,.14)}
+.price-tag{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.price-tag s{opacity:.7}
+.price-tag b{color:var(--parrot);font-size:15px}
+
+/* ---------- section heads ---------- */
+section{padding-block:72px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-size:clamp(40px,7vw,72px);font-weight:800}
+.sec-head h2 em{font-style:normal;color:var(--marigold)}
+.sec-head p{max-width:40ch;color:var(--muted);margin:0}
+
+/* ---------- perks ---------- */
+.perks{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:22px}
+.perk{background:var(--night-2);border-radius:28px;overflow:hidden;box-shadow:0 0 0 1px var(--line) inset;display:flex;flex-direction:column}
+.perk.wide{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr}
+.perk .txt{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.perk .n{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--marigold)}
+.perk h3{font-size:clamp(26px,3.4vw,34px);font-weight:800}
+.perk p{margin:0;color:var(--muted)}
+.perk .fine{font-family:var(--mono);font-size:12px;color:rgba(199,182,218,.75);margin-top:auto;padding-top:8px;border-top:1px dashed var(--line)}
+
+/* scenes: little looping animations built from Twemoji art */
+.scene{position:relative;aspect-ratio:16/10;overflow:hidden;max-width:100%}
+.perk.wide .scene{aspect-ratio:auto;min-height:320px}
+.scene .e{position:absolute;width:var(--w,16%);height:auto;transform-origin:50% 50%}
+.live{position:absolute;top:12px;left:12px;z-index:5;font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:5px 10px;border-radius:999px;background:rgba(26,14,46,.75);color:#fff;display:flex;align-items:center;gap:6px}
+.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--kumkum);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.label{position:absolute;z-index:4;font-family:var(--display);font-weight:800;font-size:clamp(13px,1.6vw,16px);line-height:1;padding:7px 11px;border-radius:12px;background:#fff;color:var(--ink);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+/* 1 pickup */
+.s1{background:linear-gradient(#2E1A55, #5B2A6E 70%, #3A1B4A)}
+.s1 .road{position:absolute;left:0;right:0;bottom:0;height:24%;background:#2A2433}
+.s1 .road:after{content:"";position:absolute;left:0;right:0;top:46%;height:4px;background:repeating-linear-gradient(90deg,#FFD86B 0 22px,transparent 22px 44px);animation:roadmove 1s linear infinite}
+@keyframes roadmove{to{background-position:44px 0}}
+.s1 .moon{--w:12%;top:8%;right:8%}
+.s1 .home{--w:20%;left:4%;bottom:20%}
+.s1 .dest{--w:16%;right:6%;bottom:22%;animation:bob 1.2s ease-in-out infinite}
+.s1 .diya{--w:9%;right:23%;bottom:22%;animation:flick .4s ease-in-out infinite alternate}
+.s1 .ride{position:absolute;bottom:10%;left:6%;width:26%;animation:ride 6s ease-in-out infinite}
+.s1 .ride img{width:100%}
+@keyframes ride{0%{left:20%;transform:scaleX(-1)}45%{left:52%;transform:scaleX(-1)}50%{left:52%;transform:scaleX(1)}95%{left:20%;transform:scaleX(1)}100%{left:20%;transform:scaleX(-1)}}
+@keyframes bob{50%{transform:translateY(-8%) rotate(-4deg)}}
+@keyframes flick{to{transform:scale(1.08) rotate(3deg)}}
+.s1 .l1{left:4%;top:10%;transform:rotate(-3deg)}
+
+/* 2 maps */
+.s2{background:#E9F2E4}
+.s2 .grid{position:absolute;inset:0;background:
+  linear-gradient(90deg, transparent 47%, #fff 47% 53%, transparent 53%) 0 0/33.3% 100%,
+  linear-gradient(0deg, transparent 45%, #fff 45% 55%, transparent 55%) 0 0/100% 50%, #DCE9D5}
+.s2 svg.route{position:absolute;inset:0;width:100%;height:100%}
+.s2 .route path{fill:none;stroke:var(--peacock);stroke-width:5;stroke-linecap:round;stroke-dasharray:10 9;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-38}}
+.s2 .pin{--w:11%;right:9%;top:6%;animation:pin 1s ease-in-out infinite}
+@keyframes pin{50%{transform:translateY(-12%)}}
+.s2 .start{--w:12%;left:6%;bottom:8%}
+.s2 .car{--w:11%;left:8.5%;top:63%;animation:drive 4.5s linear infinite}
+@keyframes drive{0%{left:8.5%;top:63%}22%{left:27.5%;top:47%}45%{left:46.5%;top:31%}68%{left:66.5%;top:19%}85%,100%{left:80%;top:2%}}
+.s2 .cow{--w:15%;left:44%;top:56%;animation:cow 4s ease-in-out infinite}
+@keyframes cow{0%,100%{transform:translateX(0) scaleX(1)}45%{transform:translateX(40%) scaleX(1)}55%{transform:translateX(40%) scaleX(-1)}}
+.s2 .light{--w:8%;left:30%;top:10%}
+.s2 .l2{right:4%;bottom:8%;transform:rotate(2deg)}
+
+/* 3 bag */
+.s3{background:#FFD6E2}
+.s3 .bag{--w:30%;left:35%;bottom:4%}
+.s3 .drop{--w:13%;top:-20%;animation:fall 4s cubic-bezier(.5,0,.8,.6) infinite}
+.s3 .d1{left:43%;animation-delay:0s}.s3 .d2{left:48%;animation-delay:1s}.s3 .d3{left:41%;animation-delay:2s}.s3 .d4{left:46%;animation-delay:3s}
+@keyframes fall{0%{top:-22%;transform:rotate(-20deg);opacity:1}55%{top:52%;transform:rotate(15deg);opacity:1}62%{top:58%;opacity:0}100%{top:58%;opacity:0}}
+.s3 .l3a{left:5%;top:12%;transform:rotate(-4deg)}
+.s3 .l3b{right:5%;top:30%;transform:rotate(3deg);background:var(--kumkum);color:#fff}
+
+/* 4 passes */
+.s4{background:#FFE7A8}
+.s4 .t{--w:30%;left:35%;top:24%;transform-origin:50% 120%;animation:fan 3s ease-in-out infinite}
+.s4 .t1{--r:-28deg}.s4 .t2{--r:0deg}.s4 .t3{--r:28deg}
+@keyframes fan{0%,15%{transform:rotate(0)}45%,85%{transform:rotate(var(--r))}100%{transform:rotate(0)}}
+.s4 .cool{--w:16%;left:6%;bottom:8%;animation:bob 1.4s ease-in-out infinite}
+.s4 .shh{--w:14%;right:6%;bottom:8%}
+.s4 .stamp{position:absolute;right:8%;top:10%;font-family:var(--display);font-weight:800;font-size:clamp(20px,3vw,30px);color:var(--kumkum);border:4px solid var(--kumkum);border-radius:10px;padding:2px 12px;transform:rotate(14deg);animation:stamp 3s ease-in infinite;background:rgba(255,231,168,.7)}
+@keyframes stamp{0%,30%{transform:rotate(14deg) scale(2.2);opacity:0}40%,100%{transform:rotate(14deg) scale(1);opacity:1}}
+
+/* 5 photographer */
+.s5{background:#C9EEF2}
+.s5 .model{--w:30%;left:22%;bottom:0;animation:pose 2.4s ease-in-out infinite}
+@keyframes pose{0%,40%{transform:rotate(0)}50%,90%{transform:rotate(-8deg) translateX(-4%)}}
+.s5 .cam{--w:22%;right:10%;bottom:10%;animation:snap 1.2s ease-in-out infinite}
+@keyframes snap{0%,70%{transform:scale(1)}80%{transform:scale(.9)}90%{transform:scale(1.05)}}
+.s5 .flash{position:absolute;inset:0;background:#fff;opacity:0;animation:flash 1.2s ease-out infinite;z-index:3;pointer-events:none}
+@keyframes flash{0%,78%{opacity:0}82%{opacity:.85}100%{opacity:0}}
+.s5 .sp{--w:9%;animation:twinkle 1.6s ease-in-out infinite}
+.s5 .sp1{left:10%;top:14%}.s5 .sp2{left:52%;top:10%;animation-delay:.5s}.s5 .sp3{left:16%;top:60%;animation-delay:1s}
+@keyframes twinkle{50%{transform:scale(.5) rotate(40deg);opacity:.4}}
+.s5 .counter{right:5%;top:10%;font-family:var(--mono);font-weight:500}
+
+/* 6 necklace */
+.s6{background:#E3D9FF}
+.s6 .girl{--w:30%;left:35%;bottom:0}
+.s6 .neck{--w:20%;left:40%;top:6%;transform-origin:50% 0;animation:swing 1.8s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+.s6 .bow{--w:13%;right:14%;top:18%;animation:bob 1.3s ease-in-out infinite}
+.s6 .hands{--w:13%;left:12%;bottom:14%;animation:bob 1s ease-in-out infinite}
+.s6 .click{left:62%;bottom:36%;animation:pop 1.8s ease-in-out infinite}
+@keyframes pop{0%,40%{transform:scale(0)}55%,90%{transform:scale(1) rotate(-4deg)}100%{transform:scale(0)}}
+
+/* 7 break time */
+.s7{background:#CFF3D9}
+.s7 .slide{--w:15%;top:30%;animation:serve 3.6s ease-in-out infinite}
+.s7 .w1{animation-delay:0s}.s7 .w2{animation-delay:.25s;top:52%}
+@keyframes serve{0%{left:105%}35%,75%{left:46%}100%{left:-20%}}
+.s7 .seat{--w:20%;left:12%;bottom:8%}
+.s7 .wc{--w:13%;right:6%;top:8%}
+.s7 .hold{--w:14%;right:24%;bottom:8%;animation:bob 1s ease-in-out infinite}
+.s7 .drip{--w:6%;left:25%;top:10%;animation:drip 1.2s ease-in infinite}
+@keyframes drip{0%{transform:translateY(0);opacity:1}100%{transform:translateY(180%);opacity:0}}
+.s7 .l7{left:4%;top:8%;transform:rotate(-3deg)}
+
+/* 8 food tour */
+.s8{background:#FFDCC2}
+.s8 .face{--w:22%;left:8%;top:30%}
+.s8 .spoon{--w:18%;left:52%;top:36%;animation:feed 2s ease-in-out infinite}
+@keyframes feed{0%,100%{transform:translateX(0) rotate(0)}45%,60%{transform:translateX(-130%) rotate(-30deg)}}
+.s8 .food{--w:14%;animation:bob 1.6s ease-in-out infinite}
+.s8 .f1{right:6%;top:10%}.s8 .f2{right:22%;bottom:8%;animation-delay:.4s}.s8 .f3{right:5%;bottom:30%;animation-delay:.8s}
+.s8 .l8{left:4%;bottom:8%;transform:rotate(-2deg)}
+
+/* 9 lift-off */
+.s9{background:linear-gradient(#FFE9A8,#FFC36B)}
+.s9 .gir{--w:32%;left:22%;bottom:0}
+.s9 .ruler{position:absolute;left:8%;bottom:0;width:7%;height:88%;background:repeating-linear-gradient(0deg,#1A0E2E 0 2px,transparent 2px 12%) , #fff;border-radius:6px 6px 0 0;box-shadow:0 0 0 2px #1A0E2E inset}
+.s9 .ft{left:1%;top:4%;background:var(--ink);color:#fff}
+.s9 .tired{--w:13%;left:40%;bottom:6%;animation:lift 4s ease-in-out infinite}
+@keyframes lift{0%,15%{bottom:4%;left:62%}45%,85%{bottom:72%;left:33%}100%{bottom:4%;left:62%}}
+.s9 .tissue{--w:13%;right:8%;top:12%;animation:bob 1.4s ease-in-out infinite}
+.s9 .sweat{--w:7%;right:26%;top:16%;animation:drip 1.4s ease-in infinite}
+
+/* 10 eyes */
+.s10{background:#000 url(img/circle.jpg) center/cover}
+.s10:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, transparent 0 16%, rgba(26,14,46,.72) 34%)}
+.s10 .eyes{--w:16%;left:42%;top:10%;animation:look 4s ease-in-out infinite;z-index:2}
+@keyframes look{0%{transform:translateX(-120%)}20%{transform:translateX(120%)}35%{transform:translateX(-60%)}55%,100%{transform:translateX(0) translateY(160%) scale(1.15)}}
+.s10 .heart{--w:12%;left:44%;top:38%;z-index:2;animation:beat 4s ease-in-out infinite}
+@keyframes beat{0%,52%{transform:scale(0)}60%{transform:scale(1.3)}66%{transform:scale(1)}74%{transform:scale(1.2)}80%,100%{transform:scale(1)}}
+.s10 .count{left:50%;bottom:8%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-weight:500;background:var(--kumkum);color:#fff}
+
+/* ---------- price ---------- */
+.plans{display:grid;grid-template-columns:1fr 1.2fr;gap:22px;align-items:stretch}
+.plan{border-radius:28px;padding:28px;background:var(--night-2);box-shadow:0 0 0 1px var(--line) inset;display:flex;flex-direction:column;gap:14px;min-width:0}
+.plan.me{background:linear-gradient(160deg, #3A1655, #22113A);box-shadow:0 0 0 2px var(--marigold) inset;position:relative}
+.plan .tag{align-self:flex-start;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--marigold);color:var(--ink)}
+.plan h3{font-size:30px}
+.amt{font-family:var(--display);font-weight:800;font-size:64px;line-height:1}
+.amt small{font-size:16px;font-weight:600;color:var(--muted);margin-left:6px}
+.mrp{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.mrp s{color:var(--kumkum)}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.plan li{display:flex;gap:10px;align-items:baseline}
+.plan li:before{content:"✓";font-weight:700;color:var(--parrot)}
+.plan.solo li:before{content:"✗";color:var(--kumkum)}
+.plan .btn{margin-top:auto;align-self:flex-start}
+.sold{position:relative}
+.sold .btn-ghost{opacity:.9}
+.sold-msg{font-family:var(--mono);font-size:12px;color:var(--kumkum);min-height:1.2em}
+
+/* ---------- booking form ---------- */
+.book{background:var(--night-2);border-radius:32px;box-shadow:0 0 0 1px var(--line) inset;overflow:hidden}
+.book-head{padding:28px 28px 0}
+.book form{padding:24px 28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label,.field .lab{font-weight:700;font-size:16px}
+.field .lab small,.field label small{font-weight:500;color:var(--muted)}
+input[type=text],input[type=tel],input[type=time],textarea{width:100%;border:0;border-radius:14px;padding:14px 16px;background:var(--night-3);box-shadow:0 0 0 1.5px var(--line) inset;font-size:16px}
+input::placeholder,textarea::placeholder{color:rgba(199,182,218,.6)}
+input:focus,textarea:focus{outline:none;box-shadow:0 0 0 2px var(--marigold) inset}
+textarea{min-height:88px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:0;cursor:pointer;border-radius:12px;padding:9px 13px;background:var(--night-3);box-shadow:0 0 0 1.5px var(--line) inset;font-weight:600;font-size:15px;text-align:left;line-height:1.2;display:inline-flex;align-items:center;gap:8px}
+.chip small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.chip:hover:not(:disabled){box-shadow:0 0 0 1.5px var(--marigold) inset}
+.chip[aria-pressed="true"]{background:var(--marigold);color:var(--ink);box-shadow:none}
+.chip[aria-pressed="true"] small{color:rgba(26,14,46,.7)}
+.chip:disabled{opacity:.38;cursor:not-allowed;text-decoration:line-through}
+.sw{width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.6)}
+.check{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--muted);cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--marigold)}
+.err{color:#FF8FA6;font-size:14px;min-height:1.2em}
+.submit-row{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:6px;border-top:1px dashed var(--line)}
+.total{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.total b{font-family:var(--display);font-size:30px;color:var(--parrot);margin-left:6px}
+.btn-main[disabled]{opacity:.6;cursor:progress}
+
+/* ---------- ticket ---------- */
+.done{display:none}
+.done.show{display:block;animation:rise .6s cubic-bezier(.2,.9,.25,1.2)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.ticket{max-width:560px;margin:0 auto;background:var(--mirror);color:var(--ink);border-radius:26px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.ticket .top{background:var(--kumkum);color:#fff;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ticket .top h3{font-size:30px}
+.ticket .top span{font-family:var(--mono);font-size:12px;letter-spacing:.12em}
+.ticket .tb{padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.ticket .f small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6B5A80;margin-bottom:3px}
+.ticket .f b{font-family:var(--display);font-size:19px;line-height:1.15;display:block;word-break:break-word}
+.ticket .f.full{grid-column:1/-1}
+.ticket .perf{border-top:2px dashed rgba(26,14,46,.2);margin:0 24px;position:relative}
+.ticket .perf:before,.ticket .perf:after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--night)}
+.ticket .perf:before{left:-36px}.ticket .perf:after{right:-36px}
+.ticket .stub{padding:16px 24px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:13px}
+.ticket .paid{font-family:var(--display);font-size:24px;color:#1F8A45}
+.after{max-width:560px;margin:26px auto 0;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+.after p{margin:0;color:var(--muted)}
+.btn-ig{color:#fff;background:linear-gradient(45deg,#F58529,#DD2A7B 45%,#8134AF 75%,#515BD4)}
+
+footer{padding-block:40px 60px;color:var(--muted);font-size:13px;text-align:center}
+footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:max(20px, env(safe-area-inset-bottom));transform:translate(-50%,160%);z-index:50;background:var(--marigold);color:var(--ink);font-weight:700;padding:12px 18px;border-radius:14px;transition:transform .35s cubic-bezier(.2,.9,.25,1.3);max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0)}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
+
+@media (max-width:820px){
+  .perks{grid-template-columns:1fr}
+  .perk.wide{grid-template-columns:1fr}
+  .perk.wide .scene{min-height:0;aspect-ratio:16/10}
+  .plans{grid-template-columns:1fr}
+  .book form{grid-template-columns:1fr}
+  section{padding-block:56px}
+}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<header class="hero">
+  <div class="bg" role="img" aria-label="Garba dancers in colourful chaniya cholis under festival lights"></div>
+  <div class="wrap">
+    <div class="badge-row">
+      <span class="badge hot">Navratri 2026</span>
+      <span class="badge">Ahmedabad</span>
+      <span class="badge">11–19 Oct</span>
+      <span class="badge">Seats left: 1</span>
+    </div>
+    <h1 class="wordmark">GARBA<small><span id="hello">Hey you</span>, will you be my Garba partner?</small></h1>
+    <p class="hero-sub">Nine nights. One circle. One very well-prepared partner with <b>10 perks</b> and a price of exactly <b>₹0</b>.</p>
+    <div class="cta-row">
+      <a class="btn btn-main" href="#book">Book for ₹0</a>
+      <a class="btn btn-ghost" href="#perks">See the 10 perks</a>
+      <span class="price-tag">MRP <s>₹1,00,000</s> · <b>100% off</b></span>
+    </div>
+  </div>
+</header>
+<div class="toran" aria-hidden="true"></div>
+
+<main>
+  <section id="perks" class="mirrorwork">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">What's included</p>
+          <h2>10 perks of <em>having me</em></h2>
+        </div>
+        <p>All perks are included free of charge. No upgrades, no hidden fees, no "terms and conditions apply". Okay, a few small ones.</p>
+      </div>
+
+      <div class="perks">
+        <!-- 1 -->
+        <article class="perk">
+          <div class="scene s1" aria-hidden="true">
+            <span class="live">LIVE</span>
+            <img class="e moon" src="img/e/1f319.svg" alt="">
+            <img class="e home" src="img/e/1f3e0.svg" alt="">
+            <img class="e diya" src="img/e/1fa94.svg" alt="">
+            <img class="e dest" src="img/e/1f483.svg" alt="">
+            <div class="road"></div>
+            <div class="ride"><img src="img/e/1f6f5.svg" alt=""></div>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 01</span>
+            <h3>Doorstep pickup &amp; drop</h3>
+            <p>I'll pick you up from your home and drop you back safely. Every night, door to door. No autos, no surge pricing, no "bhaiya, 50 extra lagega".</p>
+            <span class="fine">*Helmet provided. Hairstyle not guaranteed.</span>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="perk">
+          <div class="scene s2" aria-hidden="true">
+            <div class="grid"></div>
+            <svg class="route" viewBox="0 0 500 312" preserveAspectRatio="none"><path d="M 70 250 C 160 250, 170 150, 260 150 S 380 80, 440 50"/></svg>
+            <span class="live">LIVE NAVIGATION</span>
+            <img class="e start" src="img/e/1f3e0.svg" alt="">
+            <img class="e pin" src="img/e/1f4cd.svg" alt="">
+            <img class="e light" src="img/e/1f6a6.svg" alt="">
+            <img class="e cow" src="img/e/1f404.svg" alt="">
+            <img class="e car" src="img/e/1f6f5.svg" alt="">
+            <span class="label l2">Cow ahead. Rerouting…</span>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 02</span>
+            <h3>Built-in Google Maps</h3>
+            <p>I know every shortcut, U-turn and traffic jam in Ahmedabad. You don't need to carry your phone around all night. Just sit back and enjoy the ride.</p>
+            <span class="fine">*Also trained in dodging cows on SG Highway.</span>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="perk">
+          <div class="scene s3" aria-hidden="true">
+            <img class="e drop d1" src="img/e/1f484.svg" alt="">
+            <img class="e drop d2" src="img/e/1f4f1.svg" alt="">
+            <img class="e drop d3" src="img/e/1f380.svg" alt="">
+            <img class="e drop d4" src="img/e/1f9f4.svg" alt="">
+            <img class="e bag" src="img/e/1f45b.svg" alt="">
+            <span class="label l3a">Pocket capacity: unlimited</span>
+            <span class="label l3b">Lost items: 0</span>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 03</span>
+            <h3>Your personal bag holder</h3>
+            <p>Purse, lip balm, hair band, mobile phone: hand it all over. Your hands stay free for the dandiya, and my pockets become your pockets.</p>
+            <span class="fine">*Lip balm will be returned unused. Probably.</span>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="perk">
+          <div class="scene s4" aria-hidden="true">
+            <img class="e t t1" src="img/e/1f39f.svg" alt="">
+            <img class="e t t3" src="img/e/1f39f.svg" alt="">
+            <img class="e t t2" src="img/e/1f39f.svg" alt="">
+            <img class="e cool" src="img/e/1f60e.svg" alt="">
+            <img class="e shh" src="img/e/1f92b.svg" alt="">
+            <span class="stamp">FREE</span>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 04</span>
+            <h3>Free passes</h3>
+            <p>Passes are on me. No queues, no sold-out pages, no begging in the family WhatsApp group. You just show up and dance.</p>
+            <span class="fine">*Please don't ask how. I know people.</span>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="perk">
+          <div class="scene s5" aria-hidden="true">
+            <img class="e sp sp1" src="img/e/2728.svg" alt="">
+            <img class="e sp sp2" src="img/e/2728.svg" alt="">
+            <img class="e sp sp3" src="img/e/2728.svg" alt="">
+            <img class="e model" src="img/e/1f481-200d-2640-fe0f.svg" alt="">
+            <img class="e cam" src="img/e/1f4f8.svg" alt="">
+            <span class="label counter" id="photoCount">Photos taken: 1,247</span>
+            <div class="flash"></div>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 05</span>
+            <h3>Your personal photographer</h3>
+            <p>Every twirl, every angle, every outfit. I'll take 50 photos so you can choose 1, and I won't complain even once.</p>
+            <span class="fine">*Portrait mode on. Patience: unlimited.</span>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="perk">
+          <div class="scene s6" aria-hidden="true">
+            <img class="e girl" src="img/e/1f487-200d-2640-fe0f.svg" alt="">
+            <img class="e neck" src="img/e/1f4ff.svg" alt="">
+            <img class="e bow" src="img/e/1f380.svg" alt="">
+            <img class="e hands" src="img/e/1f91d.svg" alt="">
+            <span class="label click">*click* Done!</span>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 06</span>
+            <h3>Necklace &amp; hair band help</h3>
+            <p>Tiny necklace hook that won't close? Hair band that keeps slipping? I have steady hands and zero fear of tiny clasps.</p>
+            <span class="fine">*Certified in oxidised jewellery since 2019.</span>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="perk wide">
+          <div class="scene s7" aria-hidden="true">
+            <span class="label l7">Break time · 10 min</span>
+            <img class="e drip" src="img/e/1f4a7.svg" alt="">
+            <img class="e seat" src="img/e/1f973.svg" alt="">
+            <img class="e slide w1" src="img/e/1f964.svg" alt="">
+            <img class="e slide w2" src="img/e/1f96a.svg" alt="">
+            <img class="e wc" src="img/e/1f6bb.svg" alt="">
+            <img class="e hold" src="img/e/1f91d.svg" alt="">
+          </div>
+          <div class="txt">
+            <span class="n">PERK 07</span>
+            <h3>Break-time room service</h3>
+            <p>When the music stops, you sit down and I bring the water and snacks to you, so you don't have to walk anywhere.</p>
+            <p>Need the washroom? I'll walk you there holding your hand, so you never have to worry about the crowd.</p>
+            <span class="fine">*Delivery time: under 2 minutes. Faster than Zomato.</span>
+          </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="perk">
+          <div class="scene s8" aria-hidden="true">
+            <img class="e face" src="img/e/1f60b.svg" alt="">
+            <img class="e spoon" src="img/e/1f944.svg" alt="">
+            <img class="e food f1" src="img/e/1f355.svg" alt="">
+            <img class="e food f2" src="img/e/1f366.svg" alt="">
+            <img class="e food f3" src="img/e/1f96a.svg" alt="">
+            <span class="label l8">Next stop: Manek Chowk</span>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 08</span>
+            <h3>Post-Navratri food tour</h3>
+            <p>When Navratri is over, I'll take you to the best food places in the city, and yes, I'll feed you with my own hands.</p>
+            <span class="fine">*Includes the last bite. Even of the pizza.</span>
+          </div>
+        </article>
+
+        <!-- 9 -->
+        <article class="perk">
+          <div class="scene s9" aria-hidden="true">
+            <div class="ruler"></div>
+            <span class="label ft">6 ft</span>
+            <img class="e gir" src="img/e/1f992.svg" alt="">
+            <img class="e tired" src="img/e/1f62e-200d-1f4a8.svg" alt="">
+            <img class="e tissue" src="img/e/1f9fb.svg" alt="">
+            <img class="e sweat" src="img/e/1f4a6.svg" alt="">
+          </div>
+          <div class="txt">
+            <span class="n">PERK 09</span>
+            <h3>Tired? Lift-off available</h3>
+            <p>When your feet give up, I can lift you. I'm 6 feet tall, so my shoulder is the perfect place to rest. I also carry tissues and a handkerchief to wipe away the sweat and help you fix your makeup.</p>
+            <span class="fine">*Basically a giraffe with a hanky.</span>
+          </div>
+        </article>
+
+        <!-- 10 -->
+        <article class="perk wide">
+          <div class="scene s10" role="img" aria-label="A circle of garba dancers seen from below">
+            <img class="e eyes" src="img/e/1f440.svg" alt="">
+            <img class="e heart" src="img/e/1f498.svg" alt="">
+            <span class="label count">Target locked: 1 of 100</span>
+          </div>
+          <div class="txt">
+            <span class="n">PERK 10</span>
+            <h3>Eyes only for you</h3>
+            <p>A hundred girls in the circle, all dressed up, all twirling. My eyes will be pointing at exactly one of them.</p>
+            <p>Spoiler: it's you.</p>
+            <span class="fine">*Eye-tracking accuracy: 100%. Tested on every round.</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="price">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Pricing</p>
+          <h2>Choose your <em>plan</em></h2>
+        </div>
+        <p>We've compared both options carefully. One of them is clearly better.</p>
+      </div>
+      <div class="plans">
+        <div class="plan solo sold">
+          <h3>Going solo</h3>
+          <div class="amt">₹0<small>/ night</small></div>
+          <ul>
+            <li>Find your own way through traffic</li>
+            <li>Hold your own purse while dancing</li>
+            <li>Queue for water like everyone else</li>
+            <li>Take your own blurry selfies</li>
+          </ul>
+          <button class="btn btn-ghost" id="soloBtn" type="button">Choose this plan</button>
+          <span class="sold-msg" id="soloMsg"></span>
+        </div>
+        <div class="plan me">
+          <span class="tag">Most popular · 1 seat left</span>
+          <h3>Garba with me</h3>
+          <div class="amt">₹0<small>/ all nine nights</small></div>
+          <div class="mrp">MRP <s>₹1,00,000</s> · You save ₹1,00,000</div>
+          <ul>
+            <li>All 10 perks, included</li>
+            <li>Pickup and drop every night</li>
+            <li>Unlimited photos and snacks</li>
+            <li>Free cancellation (but please don't)</li>
+            <li>No GST. No convenience fee. No catch.</li>
+          </ul>
+          <a class="btn btn-main" href="#book">Book for ₹0</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="mirrorwork">
+    <div class="wrap">
+      <div class="book" id="bookCard">
+        <div class="book-head">
+          <p class="eyebrow">Booking counter</p>
+          <h2 style="font-size:clamp(36px,6vw,60px)">Book your Garba partner</h2>
+          <p style="color:var(--muted);margin:10px 0 0;max-width:52ch">Fill this in once and I'll handle the rest. Amount payable: ₹0. Payment methods accepted: a smile.</p>
+        </div>
+        <form id="form" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" autocomplete="name" maxlength="80" placeholder="e.g. Riya Shah" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="16" placeholder="10-digit mobile number" required>
+          </div>
+
+          <div class="field full">
+            <span class="lab">Which nights? <small>(pick as many as you like)</small></span>
+            <div class="chips" id="nights"></div>
+          </div>
+
+          <div class="field">
+            <label for="venue">Venue</label>
+            <input type="text" id="venue" name="venue" list="venues" maxlength="120" placeholder="Where are we dancing?" required>
+            <datalist id="venues">
+              <option value="Rajpath Club"></option>
+              <option value="Karnavati Club"></option>
+              <option value="YMCA Club"></option>
+              <option value="GMDC Ground"></option>
+              <option value="You choose, I'll get passes"></option>
+            </datalist>
+          </div>
+          <div class="field">
+            <label for="ptime">Pickup time</label>
+            <input type="time" id="ptime" name="ptime" value="20:00">
+          </div>
+
+          <div class="field full">
+            <label for="pickup">Pickup address</label>
+            <textarea id="pickup" name="pickup" maxlength="300" autocomplete="street-address" placeholder="House / flat number, society, area, landmark" required></textarea>
+          </div>
+          <div class="field full">
+            <label class="check"><input type="checkbox" id="same" checked> Drop me back at the same address</label>
+            <div id="dropWrap" hidden>
+              <label for="drop" style="display:block;font-weight:700;margin:8px 0">Drop-off address</label>
+              <textarea id="drop" name="drop" maxlength="300" placeholder="Where should I drop you after garba?"></textarea>
+            </div>
+          </div>
+
+          <div class="field full">
+            <span class="lab">Chaniya choli colour <small>(so I can match my kediyu)</small></span>
+            <div class="chips" id="colours" data-single>
+              <button type="button" class="chip" data-v="Red"><span class="sw" style="background:#E8264A"></span>Red</button>
+              <button type="button" class="chip" data-v="Yellow"><span class="sw" style="background:#FFC21A"></span>Yellow</button>
+              <button type="button" class="chip" data-v="Green"><span class="sw" style="background:#2EAF5A"></span>Green</button>
+              <button type="button" class="chip" data-v="Blue"><span class="sw" style="background:#2E6FE8"></span>Blue</button>
+              <button type="button" class="chip" data-v="Pink"><span class="sw" style="background:#FF6FA8"></span>Pink</button>
+              <button type="button" class="chip" data-v="White"><span class="sw" style="background:#F5F1EA"></span>White</button>
+              <button type="button" class="chip" data-v="Surprise me">Surprise me</button>
+            </div>
+          </div>
+
+          <div class="field full">
+            <span class="lab">Perks you're most excited about <small>(optional)</small></span>
+            <div class="chips" id="perkPick"></div>
+          </div>
+
+          <div class="field full">
+            <label for="note">Anything else? <small>(optional)</small></label>
+            <textarea id="note" name="note" maxlength="500" placeholder="Allergies, dandiya skill level, songs you want me to request…"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <div>
+              <div class="total">Total payable <b>₹0.00</b></div>
+              <div class="err" id="err" role="alert"></div>
+            </div>
+            <button class="btn btn-main" id="submit" type="submit">Book for ₹0</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="done" id="done">
+        <div class="ticket">
+          <div class="top"><h3>Booking confirmed</h3><span id="pnr">PNR GRB-0000</span></div>
+          <div class="tb">
+            <div class="f"><small>Passenger</small><b id="tName"></b></div>
+            <div class="f"><small>Phone</small><b id="tPhone"></b></div>
+            <div class="f full"><small>Nights</small><b id="tNights"></b></div>
+            <div class="f"><small>Venue</small><b id="tVenue"></b></div>
+            <div class="f"><small>Pickup time</small><b id="tTime"></b></div>
+            <div class="f full"><small>Pickup</small><b id="tPickup"></b></div>
+            <div class="f full"><small>Drop-off</small><b id="tDrop"></b></div>
+          </div>
+          <div class="perf"></div>
+          <div class="stub"><span>Partner: 1 · Seats left: 0</span><span class="paid">Paid ₹0.00</span></div>
+        </div>
+        <div class="after">
+          <p id="savedMsg">Your booking has been sent to me. See you on the dance floor!</p>
+          <a class="btn btn-ig" id="igBtn" href="https://ig.me/m/_tarang2602" target="_blank" rel="noopener">Send me a "booked!" on Instagram</a>
+          <button class="btn btn-ghost" id="again" type="button">Edit booking</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Made with love, nerves and too many dandiya puns.<br>
+    Photos: “Vibrant Navratri Garba” and “Group of Navratri Garba dancers” by Saurabh Sirohiya, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons. Illustrations: <a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener">Twemoji</a>, CC BY 4.0.
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const CONFIG = {
+  supabaseUrl: "https://qknwvduyboebddoziwwa.supabase.co",
+  supabaseKey: "sb_publishable_fpud5LAB4xqKMjN650jxeg_iRrs2FXz",  // publishable key: insert-only by database rules
+  instagram: "_tarang2602"
+};
+
+const $ = s => document.querySelector(s);
+const params = new URLSearchParams(location.search);
+const hashName = decodeURIComponent(location.hash.slice(1)).replace(/[-_]/g, " ").trim();
+const friend = (params.get("to") || (["perks","price","book"].includes(hashName) ? "" : hashName) || "").trim();
+if (friend) { $("#hello").textContent = `Hey ${friend}`; $("#name").value = friend; }
+
+/* ---------- nights: Navratri 2026 runs 11–19 Oct ---------- */
+const NIGHTS = Array.from({length:9}, (_,i) => ({ n:i+1, d:new Date(2026, 9, 11+i) }));
+const today = new Date(); today.setHours(0,0,0,0);
+const nightsBox = $("#nights");
+NIGHTS.forEach(({n,d})=>{
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip";
+  const label = d.toLocaleDateString("en-IN",{weekday:"short", day:"numeric", month:"short"});
+  b.dataset.v = `Night ${n} (${d.getDate()} Oct)`;
+  b.innerHTML = `Night ${n}<small>${label}</small>`;
+  if (d < today){ b.disabled = true; b.title = "This night has already happened"; }
+  nightsBox.appendChild(b);
+});
+const allBtn = document.createElement("button");
+allBtn.type = "button"; allBtn.className = "chip"; allBtn.dataset.all = "1";
+allBtn.innerHTML = `All remaining nights<small>The season pass</small>`;
+nightsBox.appendChild(allBtn);
+
+/* ---------- perk picker ---------- */
+const PERKS = ["Pickup & drop","Built-in Google Maps","Bag holder","Free passes","Photographer","Necklace help","Break-time service","Food tour","Lift-off","Eyes only for you"];
+PERKS.forEach(p=>{ const b=document.createElement("button"); b.type="button"; b.className="chip"; b.dataset.v=p; b.textContent=p; $("#perkPick").appendChild(b); });
+
+/* ---------- chip behaviour ---------- */
+document.querySelectorAll(".chips").forEach(box=>{
+  box.addEventListener("click", e=>{
+    const c = e.target.closest(".chip"); if (!c || c.disabled) return;
+    if (box.hasAttribute("data-single")){
+      box.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", x===c));
+      return;
+    }
+    if (c.dataset.all){
+      const on = c.getAttribute("aria-pressed") !== "true";
+      box.querySelectorAll(".chip:not(:disabled)").forEach(x=>x.setAttribute("aria-pressed", on));
+      return;
+    }
+    c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") !== "true");
+    if (box.id === "nights"){
+      const singles = [...box.querySelectorAll(".chip:not(:disabled):not([data-all])")];
+      allBtn.setAttribute("aria-pressed", singles.every(x=>x.getAttribute("aria-pressed")==="true"));
+    }
+  });
+});
+const picked = id => [...document.querySelectorAll(`#${id} .chip[aria-pressed="true"]:not([data-all])`)].map(c=>c.dataset.v);
+
+$("#same").addEventListener("change", e=>{ $("#dropWrap").hidden = e.target.checked; });
+
+/* ---------- solo plan joke ---------- */
+const SOLO = ["Sorry, this plan is sold out.", "Still sold out.", "Server busy. Try the other plan.", "This button has been retired. 🙂"];
+let soloN = 0;
+$("#soloBtn").addEventListener("click", ()=>{
+  $("#soloMsg").textContent = SOLO[Math.min(soloN++, SOLO.length-1)];
+  if (soloN >= 3){ $("#soloBtn").disabled = true; $("#soloBtn").textContent = "Unavailable"; }
+});
+
+/* ---------- photo counter ---------- */
+let pc = 1247;
+setInterval(()=>{ pc += 1 + Math.floor(Math.random()*3); $("#photoCount").textContent = "Photos taken: " + pc.toLocaleString("en-IN"); }, 1200);
+
+/* ---------- submit ---------- */
+function fmtTime(v){
+  if (!v) return "";
+  const [h,m] = v.split(":").map(Number);
+  return `${((h+11)%12)+1}:${String(m).padStart(2,"0")} ${h<12?"AM":"PM"}`;
+}
+function shortNights(list){
+  if (!list.length) return "";
+  const days = list.map(s=>s.match(/\((\d+) Oct\)/)[1]);
+  return days.join(", ") + " Oct";
+}
+
+$("#form").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const err = $("#err"); err.textContent = "";
+  const name = $("#name").value.trim();
+  const phone = $("#phone").value.replace(/[^\d+]/g,"");
+  const nights = picked("nights");
+  const venue = $("#venue").value.trim();
+  const pickup = $("#pickup").value.trim();
+  const drop = $("#same").checked ? pickup : $("#drop").value.trim();
+  const problems = [];
+  if (!name) problems.push("your name");
+  if (phone.replace(/\D/g,"").length < 10) problems.push("a 10-digit phone number");
+  if (!nights.length) problems.push("at least one night");
+  if (!venue) problems.push("the venue");
+  if (!pickup) problems.push("your pickup address");
+  if (!drop) problems.push("your drop-off address");
+  if (problems.length){ err.textContent = "Please add " + problems.join(", ") + "."; return; }
+
+  const row = {
+    name, phone,
+    night: shortNights(nights),
+    venue,
+    pickup_address: pickup,
+    drop_address: drop,
+    pickup_time: fmtTime($("#ptime").value),
+    outfit_colour: picked("colours")[0] || null,
+    perks: picked("perkPick"),
+    note: $("#note").value.trim() || null
+  };
+
+  const btn = $("#submit"); btn.disabled = true; btn.textContent = "Booking…";
+  let saved = false;
+  try {
+    const r = await fetch(CONFIG.supabaseUrl + "/rest/v1/bookings", {
+      method:"POST",
+      headers:{ "apikey":CONFIG.supabaseKey, "Content-Type":"application/json", "Prefer":"return=minimal" },
+      body: JSON.stringify(row)
+    });
+    saved = r.ok;
+  } catch {}
+  btn.disabled = false; btn.textContent = "Book for ₹0";
+
+  if (!saved){
+    err.textContent = "The booking didn't go through. Check your internet connection and tap Book again.";
+    return;
+  }
+  showTicket(row);
+});
+
+function showTicket(r){
+  $("#pnr").textContent = "PNR GRB-" + String(Math.floor(1000 + Math.random()*9000));
+  $("#tName").textContent = r.name;
+  $("#tPhone").textContent = r.phone;
+  $("#tNights").textContent = r.night;
+  $("#tVenue").textContent = r.venue;
+  $("#tTime").textContent = r.pickup_time || "—";
+  $("#tPickup").textContent = r.pickup_address;
+  $("#tDrop").textContent = r.drop_address === r.pickup_address ? "Same as pickup" : r.drop_address;
+  $("#bookCard").hidden = true;
+  $("#done").classList.add("show");
+  $("#book").scrollIntoView({behavior:"smooth"});
+  burst();
+  toast("Booked! Amount charged: ₹0.00");
+}
+$("#again").addEventListener("click", ()=>{
+  $("#done").classList.remove("show"); $("#bookCard").hidden = false;
+  $("#book").scrollIntoView({behavior:"smooth"});
+});
+
+/* ---------- toast ---------- */
+let tt;
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>el.classList.remove("show"),3200); }
+
+/* ---------- confetti: dandiya sticks + mirrors ---------- */
+const cv=$("#confetti"), cx=cv.getContext("2d"); let parts=[], raf;
+function size(){ cv.width=innerWidth*devicePixelRatio; cv.height=innerHeight*devicePixelRatio; } size(); addEventListener("resize",size);
+function burst(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cols=["#E8264A","#FFB000","#3DBB61","#14A6B8","#ECE6F7","#FF7BA0"];
+  for(let i=0;i<160;i++) parts.push({x:innerWidth/2,y:innerHeight*.4,vx:(Math.random()-.5)*16,vy:-Math.random()*15-4,r:4+Math.random()*7,c:cols[i%cols.length],a:Math.random()*6,va:(Math.random()-.5)*.3,s:i%3,life:0});
+  cancelAnimationFrame(raf); tick();
+  clearTimeout(burst.t); burst.t=setTimeout(()=>{parts=[];cancelAnimationFrame(raf);cx.clearRect(0,0,cv.width,cv.height)},4500);
+}
+function tick(){
+  const d=devicePixelRatio; cx.clearRect(0,0,cv.width,cv.height);
+  parts.forEach(p=>{p.vy+=.32;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;p.life++;
+    cx.save();cx.translate(p.x*d,p.y*d);cx.rotate(p.a);cx.fillStyle=p.c;const r=p.r*d;
+    if(p.s===0){cx.fillRect(-r*.25,-r*1.6,r*.5,r*3.2)}            // dandiya stick
+    else if(p.s===1){cx.beginPath();cx.arc(0,0,r*.7,0,7);cx.fill()} // mirror
+    else{cx.beginPath();cx.moveTo(0,-r);cx.lineTo(r*.7,0);cx.lineTo(0,r);cx.lineTo(-r*.7,0);cx.fill()}
+    cx.restore();});
+  parts=parts.filter(p=>p.y<innerHeight+40&&p.life<260);
+  if(parts.length) raf=requestAnimationFrame(tick); else cx.clearRect(0,0,cv.width,cv.height);
+}
+</script>
+</body>
+</html>
