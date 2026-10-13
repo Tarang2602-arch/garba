@@ -209,13 +209,19 @@ section{padding-block:72px}
 
 /* 9 lift-off */
 .s9{background:linear-gradient(#FFE9A8,#FFC36B)}
-.s9 .gir{--w:32%;left:22%;bottom:0}
-.s9 .ruler{position:absolute;left:8%;bottom:0;width:7%;height:88%;background:repeating-linear-gradient(0deg,#1A0E2E 0 2px,transparent 2px 12%) , #fff;border-radius:6px 6px 0 0;box-shadow:0 0 0 2px #1A0E2E inset}
-.s9 .ft{left:1%;top:4%;background:var(--ink);color:#fff}
-.s9 .tired{--w:13%;left:40%;bottom:6%;animation:lift 4s ease-in-out infinite}
-@keyframes lift{0%,15%{bottom:4%;left:62%}45%,85%{bottom:72%;left:33%}100%{bottom:4%;left:62%}}
-.s9 .tissue{--w:13%;right:8%;top:12%;animation:bob 1.4s ease-in-out infinite}
-.s9 .sweat{--w:7%;right:26%;top:16%;animation:drip 1.4s ease-in infinite}
+.s9 svg{position:absolute;inset:0;width:100%;height:100%}
+.s9 .mA{animation:modeA 9s ease-in-out infinite}
+.s9 .mB{animation:modeB 9s ease-in-out infinite}
+@keyframes modeA{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
+@keyframes modeB{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+.s9 .liftup{animation:liftup 9s ease-in-out infinite}
+@keyframes liftup{0%,50%{transform:translateY(14px)}58%,92%{transform:translateY(0)}100%{transform:translateY(14px)}}
+.s9 .zz{animation:zz 2.4s ease-in-out infinite}
+@keyframes zz{0%{opacity:0;transform:translate(0,6px)}40%{opacity:1}100%{opacity:0;transform:translate(10px,-14px)}}
+.s9 .hearts{animation:bob 1.2s ease-in-out infinite}
+.s9 .l9a,.s9 .l9b{right:4%;top:6%}
+.s9 .l9a{animation:modeA 9s ease-in-out infinite}
+.s9 .l9b{animation:modeB 9s ease-in-out infinite;background:var(--kumkum);color:#fff}
 
 /* 10 eyes */
 .s10{background:#000 url(img/circle.jpg) center/cover}
@@ -499,19 +505,120 @@ footer a{color:var(--muted)}
 
         <!-- 9 -->
         <article class="perk">
-          <div class="scene s9" aria-hidden="true">
-            <div class="ruler"></div>
-            <span class="label ft">6 ft</span>
-            <img class="e gir" src="img/e/1f992.svg" alt="">
-            <img class="e tired" src="img/e/1f62e-200d-1f4a8.svg" alt="">
-            <img class="e tissue" src="img/e/1f9fb.svg" alt="">
-            <img class="e sweat" src="img/e/1f4a6.svg" alt="">
+          <div class="scene s9" role="img" aria-label="Cartoon: a girl resting her head on a tall boy's shoulder, then the boy lifting her in his arms">
+            <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+              <defs>
+                <pattern id="mir" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.8" fill="#fff" opacity=".85"/></pattern>
+              </defs>
+              <!-- 6 ft ruler -->
+              <g>
+                <rect x="34" y="51" width="22" height="189" rx="3" fill="#fff" stroke="#1A0E2E" stroke-width="2"/>
+                <g stroke="#1A0E2E" stroke-width="2">
+                  <line x1="34" y1="82.5" x2="46" y2="82.5"/><line x1="34" y1="114" x2="50" y2="114"/><line x1="34" y1="145.5" x2="46" y2="145.5"/>
+                  <line x1="34" y1="177" x2="50" y2="177"/><line x1="34" y1="208.5" x2="46" y2="208.5"/>
+                </g>
+                <rect x="22" y="26" width="46" height="20" rx="6" fill="#1A0E2E"/>
+                <text x="45" y="40.5" text-anchor="middle" font-family="Baloo Bhai 2, sans-serif" font-weight="800" font-size="13" fill="#fff">6 ft</text>
+                <line x1="56" y1="51" x2="214" y2="51" stroke="#1A0E2E" stroke-width="1.5" stroke-dasharray="4 4" opacity=".45"/>
+              </g>
+              <ellipse cx="215" cy="241" rx="95" ry="7" fill="#1A0E2E" opacity=".14"/>
+
+              <!-- MODE A: shoulder rest -->
+              <g class="mA">
+                <!-- boy -->
+                <g>
+                  <rect x="220" y="172" width="13" height="64" rx="6" fill="#F5EFE3"/>
+                  <rect x="237" y="172" width="13" height="64" rx="6" fill="#F5EFE3"/>
+                  <ellipse cx="225" cy="238" rx="10" ry="4" fill="#7A3B12"/><ellipse cx="246" cy="238" rx="10" ry="4" fill="#7A3B12"/>
+                  <path d="M258 102 L270 150" stroke="#E8B48A" stroke-width="10" stroke-linecap="round"/>
+                  <circle cx="271" cy="153" r="6" fill="#E8B48A"/>
+                  <rect x="266" y="150" width="16" height="13" rx="2" fill="#fff" stroke="#c9c2d6" transform="rotate(12 274 156)"/>
+                  <path d="M211 98 Q235 90 259 98 L262 150 Q270 166 274 182 L196 182 Q200 166 208 150 Z" fill="#FFB000"/>
+                  <path d="M197 174 L273 174 L274 182 L196 182 Z" fill="#E8264A"/>
+                  <rect x="197" y="174" width="77" height="8" fill="url(#mir)"/>
+                  <path d="M235 96 L235 140" stroke="#E8264A" stroke-width="2"/>
+                  <rect x="229" y="84" width="12" height="14" fill="#E8B48A"/>
+                  <circle cx="235" cy="70" r="19" fill="#E8B48A"/>
+                  <path d="M216 67 Q217 46 236 47 Q255 47 255 67 Q247 56 236 58 Q224 57 216 67 Z" fill="#2B1B14"/>
+                  <circle cx="228.5" cy="71" r="2.2" fill="#2B1B14"/><circle cx="241.5" cy="71" r="2.2" fill="#2B1B14"/>
+                  <path d="M229 79 Q235 84 241 79" stroke="#2B1B14" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </g>
+                <!-- girl -->
+                <g>
+                  <ellipse cx="176" cy="238" rx="8" ry="3.5" fill="#B5175E"/><ellipse cx="194" cy="238" rx="8" ry="3.5" fill="#B5175E"/>
+                  <path d="M168 150 L204 150 L228 234 Q186 244 144 234 Z" fill="#3DBB61"/>
+                  <path d="M150 222 Q186 230 225 222 L228 234 Q186 244 144 234 Z" fill="#E8264A"/>
+                  <path d="M150 222 Q186 230 225 222 L228 234 Q186 244 144 234 Z" fill="url(#mir)"/>
+                  <rect x="170" y="114" width="33" height="38" rx="9" fill="#E8264A"/>
+                  <rect x="170" y="128" width="33" height="8" fill="url(#mir)"/>
+                  <path d="M173 116 Q158 152 150 196 L161 198 Q170 154 184 119 Z" fill="#FF7BA0"/>
+                  <!-- her arm around his waist -->
+                  <path d="M201 124 Q214 140 226 136" stroke="#F2C29B" stroke-width="7" fill="none" stroke-linecap="round"/>
+                  <rect x="183" y="104" width="9" height="12" fill="#F2C29B"/>
+                  <g transform="rotate(20 190 98)">
+                    <circle cx="176" cy="84" r="8" fill="#2B1B14"/>
+                    <circle cx="190" cy="96" r="16" fill="#F2C29B"/>
+                    <path d="M174 94 Q175 78 190 79 Q205 79 206 94 Q198 86 190 87 Q181 86 174 94 Z" fill="#2B1B14"/>
+                    <circle cx="190" cy="89" r="1.8" fill="#E8264A"/>
+                    <path d="M182 98 q3 3 6 0 M193 98 q3 3 6 0" stroke="#2B1B14" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                    <path d="M187 104 Q190 106 193 104" stroke="#2B1B14" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                    <circle cx="179" cy="102" r="2" fill="#FF9AA8" opacity=".7"/>
+                  </g>
+                  <path d="M168 92 q-3 6 0 9 q3 -3 0 -9" fill="#5BC0EB"/>
+                </g>
+                <g class="zz" font-family="Baloo Bhai 2, sans-serif" font-weight="800" fill="#1A0E2E">
+                  <text x="150" y="80" font-size="12">z</text><text x="140" y="66" font-size="16">z</text><text x="128" y="48" font-size="21">Z</text>
+                </g>
+              </g>
+
+              <!-- MODE B: lift-off -->
+              <g class="mB">
+                <g class="liftup">
+                  <!-- boy -->
+                  <rect x="215" y="172" width="13" height="64" rx="6" fill="#F5EFE3"/>
+                  <rect x="232" y="172" width="13" height="64" rx="6" fill="#F5EFE3"/>
+                  <ellipse cx="220" cy="238" rx="10" ry="4" fill="#7A3B12"/><ellipse cx="241" cy="238" rx="10" ry="4" fill="#7A3B12"/>
+                  <path d="M206 98 Q230 90 254 98 L257 150 Q265 166 269 182 L191 182 Q195 166 203 150 Z" fill="#FFB000"/>
+                  <path d="M192 174 L268 174 L269 182 L191 182 Z" fill="#E8264A"/>
+                  <rect x="192" y="174" width="77" height="8" fill="url(#mir)"/>
+                  <rect x="224" y="84" width="12" height="14" fill="#E8B48A"/>
+                  <circle cx="230" cy="70" r="19" fill="#E8B48A"/>
+                  <path d="M211 67 Q212 46 231 47 Q250 47 250 67 Q242 56 231 58 Q219 57 211 67 Z" fill="#2B1B14"/>
+                  <circle cx="223.5" cy="71" r="2.2" fill="#2B1B14"/><circle cx="236.5" cy="71" r="2.2" fill="#2B1B14"/>
+                  <path d="M222 78 Q230 86 238 78" stroke="#2B1B14" stroke-width="2" fill="#fff" stroke-linecap="round"/>
+                  <!-- boy arms reaching under her -->
+                  <path d="M208 102 Q190 120 196 134" stroke="#E8B48A" stroke-width="10" fill="none" stroke-linecap="round"/>
+                  <path d="M252 102 Q275 118 276 134" stroke="#E8B48A" stroke-width="10" fill="none" stroke-linecap="round"/>
+                  <!-- girl lying across his arms -->
+                  <path d="M238 104 L284 92 Q300 116 290 140 L240 130 Z" fill="#3DBB61"/>
+                  <path d="M284 92 Q300 116 290 140 L282 138 Q290 116 277 94 Z" fill="#E8264A"/>
+                  <path d="M288 128 L300 150 M282 134 L292 154" stroke="#F2C29B" stroke-width="5" stroke-linecap="round"/>
+                  <ellipse cx="302" cy="153" rx="6" ry="3" fill="#B5175E"/><ellipse cx="294" cy="157" rx="6" ry="3" fill="#B5175E"/>
+                  <rect x="198" y="104" width="44" height="26" rx="10" fill="#E8264A" transform="rotate(-6 220 117)"/>
+                  <rect x="200" y="112" width="40" height="7" fill="url(#mir)" transform="rotate(-6 220 117)"/>
+                  <path d="M205 104 Q218 80 238 88" stroke="#F2C29B" stroke-width="7" fill="none" stroke-linecap="round"/>
+                  <circle cx="171" cy="100" r="8" fill="#2B1B14"/>
+                  <circle cx="190" cy="104" r="16" fill="#F2C29B"/>
+                  <path d="M175 100 Q178 86 192 88 Q205 90 205 103 Q197 95 190 96 Q181 95 175 100 Z" fill="#2B1B14"/>
+                  <circle cx="186" cy="104" r="2" fill="#2B1B14"/><circle cx="196" cy="104" r="2" fill="#2B1B14"/>
+                  <path d="M185 110 Q191 116 197 110" stroke="#2B1B14" stroke-width="1.8" fill="#fff" stroke-linecap="round"/>
+                  <circle cx="182" cy="110" r="2.2" fill="#FF9AA8" opacity=".8"/><circle cx="200" cy="110" r="2.2" fill="#FF9AA8" opacity=".8"/>
+                  <circle cx="196" cy="134" r="6" fill="#E8B48A"/><circle cx="276" cy="136" r="6" fill="#E8B48A"/>
+                </g>
+                <g class="hearts" fill="#E8264A">
+                  <path d="M150 70 c-6 -8 -16 0 -8 8 l8 8 l8 -8 c8 -8 -2 -16 -8 -8 z"/>
+                  <path d="M318 60 c-4 -6 -11 0 -6 6 l6 6 l6 -6 c5 -6 -2 -12 -6 -6 z" opacity=".8"/>
+                </g>
+              </g>
+            </svg>
+            <span class="label l9a">Shoulder rest mode</span>
+            <span class="label l9b">Lift-off mode</span>
           </div>
           <div class="txt">
             <span class="n">PERK 09</span>
             <h3>Tired? Lift-off available</h3>
             <p>When your feet give up, I can lift you. I'm 6 feet tall, so my shoulder is the perfect place to rest. I also carry tissues and a handkerchief to wipe away the sweat and help you fix your makeup.</p>
-            <span class="fine">*Basically a giraffe with a hanky.</span>
+            <span class="fine">*6 feet of shoulder, plus a hanky. Batteries not required.</span>
           </div>
         </article>
 
@@ -685,6 +792,7 @@ footer a{color:var(--muted)}
 
 <footer>
   <div class="wrap">
+    <strong style="color:var(--text);font-size:15px">Created by: Tarang Mehta</strong><br>
     Made with love, nerves and too many dandiya puns.<br>
     Photos: “Vibrant Navratri Garba” and “Group of Navratri Garba dancers” by Saurabh Sirohiya, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons. Illustrations: <a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener">Twemoji</a>, CC BY 4.0.
   </div>
